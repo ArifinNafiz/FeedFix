@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta
+      name="google-site-verification"
+      content="_l_-jpYyPcl0XTCyCA5HHmF-c6L5AfOKx5Ao10F99W8"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Validate Shopify product CSV files, find import errors, understand what went wrong, and download corrected files with FeedFix."
+    />
+
+    <title>Shopify CSV Validator & Error Checker | FeedFix</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
+      defer
+    ></script>
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a href="#" class="logo">FeedFix<span>.</span></a>
+
+      <div class="header-actions">
+        <p class="header-caption">CSV CLEANUP WORKSPACE</p>
+
+        <button id="themeToggle" class="theme-toggle" type="button">
+          Dark mode
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="welcome-section">
+        <p class="eyebrow">YOUR PRODUCT DATA, UNDER CONTROL</p>
+        <h1>Shopify CSV Validator</h1>
+        <p class="subtitle">
+          Validate Shopify product CSV files, find common import errors,
+          understand what needs fixing, and download files with approved
+          corrections.
+        </p>
+      </section>
+
+      <section class="import-mode-section">
+        <label for="importMode">What are you doing in Shopify?</label>
+
+        <select id="importMode">
+          <option value="new">Import new products</option>
+          <option value="update">Update existing products</option>
+        </select>
+
+        <p>Choose the operation you're preparing for.</p>
+      </section>
+
+      <section class="upload-section">
+        <div class="upload-content">
+          <div class="upload-icon">↑</div>
+
+          <h2>Upload your Shopify product CSV</h2>
+
+          <p>Choose a product CSV file to inspect and clean.</p>
+
+          <label for="csvFile" class="upload-label"> Choose CSV file </label>
+
+          <input type="file" id="csvFile" accept=".csv,text/csv" hidden />
+
+          <p class="file-note">CSV files only</p>
+          <p id="fileStatus" class="file-status"></p>
+        </div>
+      </section>
+
+      <section id="previewSection" class="preview-section" hidden>
+        <div id="previewWarning" class="preview-warning" hidden>
+          <strong>CSV preview may be incomplete</strong>
+          <p>
+            FeedFix detected formatting problems in your CSV. Some values may
+            not appear correctly in this preview. Review the reported issues
+            before continuing.
+          </p>
+        </div>
+        <div class="preview-header">
+          <div>
+            <h2>Data preview</h2>
+            <p>Your uploaded product data</p>
+          </div>
+
+          <span id="rowCount" class="row-count"></span>
+        </div>
+
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table id="previewTable">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="export-actions">
+          <button id="exportCsvButton" type="button">
+            Download cleaned CSV
+          </button>
+
+          <p id="exportStatus">
+            Only approved corrections will be included in your download.
+          </p>
+        </div>
+      </section>
+
+      <section id="issuesSection" class="issues-section" hidden>
+        <div class="issues-header">
+          <h2>Shopify CSV validation issues</h2>
+          <span id="issueCount"></span>
+        </div>
+
+        <div id="issuesList" class="issues-list"></div>
+      </section>
+    </main>
+  </body>
+</html>
